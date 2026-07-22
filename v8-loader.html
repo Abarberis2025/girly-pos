@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Girly POS</title>
+<style>html,body{margin:0;min-height:100%;background:#f7f5f7;font-family:system-ui}#loading{min-height:100vh;display:grid;place-items:center;color:#95144f;font-weight:800}</style>
+</head>
+<body>
+<div id="loading">Cargando Girly POS…</div>
+<script>
+(async()=>{
+  try{
+    const response=await fetch('/index.html?base=v7',{cache:'no-store'});
+    if(!response.ok)throw new Error('No se pudo cargar la aplicación base');
+    let html=await response.text();
+    html=html.replace('</body>','<script src="/v8-patch.js?v=1"><\/script></body>');
+    document.open();document.write(html);document.close();
+  }catch(error){
+    document.getElementById('loading').textContent='Error al cargar Girly POS: '+error.message;
+  }
+})();
+</script>
+</body>
+</html>
