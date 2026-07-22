@@ -14,7 +14,7 @@
     const response=await fetch('/index.html?base=v7',{cache:'no-store'});
     if(!response.ok)throw new Error('No se pudo cargar la aplicación base');
     let html=await response.text();
-    html=html.replace('</body>','<script src="/v8-patch.js?v=1"><\/script></body>');
+    html=html.replace('</body>','<script src="/v8-prepatch.js?v=2"><\/script><script src="/v8-patch.js?v=2"><\/script></body>');
     document.open();document.write(html);document.close();
   }catch(error){
     document.getElementById('loading').textContent='Error al cargar Girly POS: '+error.message;
