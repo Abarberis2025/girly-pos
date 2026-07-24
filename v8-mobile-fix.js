@@ -21,7 +21,7 @@
 
   function renderNegativeStockSettings(){
     const settingsView=document.querySelector('#view-settings');
-    if(!settingsView||!window.s)return false;
+    if(!settingsView||typeof s==='undefined')return false;
 
     let card=document.querySelector('#negativeStockSettings');
     if(!card){
